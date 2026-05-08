@@ -3,7 +3,10 @@ import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Printer, XCircle, Loader2, Lock } from 'lucide-react';
 
-const API_BASE = import.meta.env.VITE_API_URL || `http://${window.location.hostname}:8081/api/files`;
+const VITE_URL = import.meta.env.VITE_API_URL;
+const API_BASE = VITE_URL 
+  ? (VITE_URL.endsWith('/api/files') ? VITE_URL : `${VITE_URL}/api/files`)
+  : `http://${window.location.hostname}:8081/api/files`;
 
 export default function Viewer() {
   const { token } = useParams();
