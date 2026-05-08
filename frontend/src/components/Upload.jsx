@@ -22,7 +22,8 @@ export default function Upload() {
       const response = await axios.post(`${API_BASE}/upload`, formData);
       setMetadata(response.data);
     } catch (error) {
-      alert('Upload failed. Is the backend running?');
+      const msg = error.response ? `Error ${error.response.status}: ${error.response.data}` : "Network Error - Is the URL correct?";
+      alert(`Upload failed: ${msg}\nTrying to connect to: ${API_BASE}`);
       console.error(error);
     } finally {
       setLoading(false);
