@@ -1,0 +1,20 @@
+version: '3.8'
+services:
+  app:
+    build: .
+    ports:
+      - "8081:8081"
+    environment:
+      - MONGODB_URI=mongodb://mongo:27017/secureprint
+      - ENCRYPTION_KEY=12345678901234567890123456789012
+      - JWT_SECRET=my-default-jwt-secret-at-least-256-bits!!!
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo:5.0
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+volumes:
+  mongo_data:

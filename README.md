@@ -15,7 +15,17 @@ A secure document printing platform that ensures files are encrypted, temporaril
 
 ## Setup Instructions
 
-### 1. Backend (Spring Boot)
+### Option 1: Using Docker (Recommended for easy deployment)
+1. Ensure Docker and Docker Compose are installed.
+2. Run the application:
+   ```bash
+   docker-compose up --build
+   ```
+3. Access the application at `http://localhost:8081`.
+
+### Option 2: Manual Setup
+
+#### 1. Backend (Spring Boot)
 1. Navigate to `backend/`.
 2. Update `src/main/resources/application.properties` with your **MongoDB Atlas URI**.
 3. Run with Maven:
@@ -23,7 +33,7 @@ A secure document printing platform that ensures files are encrypted, temporaril
    mvn spring-boot:run
    ```
 
-### 2. Frontend (React)
+#### 2. Frontend (React)
 1. Navigate to `frontend/`.
 2. Install dependencies:
    ```bash

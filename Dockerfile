@@ -2,7 +2,14 @@
 FROM maven:3.8.5-openjdk-17 AS build
 WORKDIR /app
 COPY backend/ /app/backend/
+COPY frontend/ /app/frontend/
+WORKDIR /app/frontend
+RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && apt-get install -y nodejs
+RUN npm install
+RUN npm run build
 WORKDIR /app/backend
+RUN mkdir -p src/main/resources/static
+RUN cp -r ../frontend/dist/* src/main/resources/static/
 RUN mvn clean package -DskipTests
 
 # Run stage
