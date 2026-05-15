@@ -15,7 +15,7 @@ A secure document printing platform that ensures files are encrypted, temporaril
 
 ## Setup Instructions
 
-### Option 1: Using Docker (Recommended for easy deployment)
+### Option 1: Using Docker 
 1. Ensure Docker and Docker Compose are installed.
 2. Run the application:
    ```bash
